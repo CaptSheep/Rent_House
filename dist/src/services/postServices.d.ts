@@ -5,6 +5,7 @@ export declare class PostServices {
     addPost: (post: any) => any;
     postInfo: (id: any) => Promise<any>;
     editPost: (id: any, post: any) => Promise<any>;
+    deletePost: (id: any) => Promise<any>;
 }
 declare const _default: PostServices;
 export default _default;

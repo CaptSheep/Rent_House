@@ -18,6 +18,9 @@ class PostServices {
         this.editPost = async (id, post) => {
             return await this.postRepository.update({ id: id }, post);
         };
+        this.deletePost = async (id) => {
+            return this.postRepository.delete({ id: id });
+        };
         data_source_1.AppDataSource.initialize().then(() => {
             this.postRepository = data_source_1.AppDataSource.getRepository(posts_1.Posts);
         });

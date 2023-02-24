@@ -6,6 +6,7 @@ export declare class PostController {
     createPost: (req: Request, res: Response) => Promise<void>;
     postInfo: (req: any, res: any) => Promise<void>;
     updatePost: (req: Request, res: Response) => Promise<void>;
+    deletePost: (req: any, res: any) => Promise<void>;
 }
 declare const _default: PostController;
 export default _default;

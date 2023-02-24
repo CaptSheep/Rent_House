@@ -1,5 +1,6 @@
 import {AppDataSource} from "../data-source";
 import {Posts} from "../model/posts";
+import {deflateRawSync} from "zlib";
 
 export class PostServices {
     private postRepository
@@ -20,6 +21,10 @@ export class PostServices {
     }
     editPost = async (id,post)=>{
         return await this.postRepository.update({id: id}, post)
+    }
+    deletePost = async (id)=>{
+        return this.postRepository.delete({id:id})
+
     }
 
 }
