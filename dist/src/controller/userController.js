@@ -16,6 +16,15 @@ class UserController {
                 });
             }
         };
+        this.login = async (req, res) => {
+            let user = await this.userServices.checkLogin(req.body);
+            if (user.check) {
+                res.status(200).json('Login Successfully');
+            }
+            else {
+                res.status(404).json('Wrong username or password. Please try again');
+            }
+        };
         this.userServices = new userServices_1.UserServices();
     }
 }
