@@ -24,4 +24,26 @@ export class UserServices {
         }
         return check
     }
+
+    checkLogin = async (userLogin) => {
+        let user = {
+            check: false,
+            userFind: []
+        }
+        let userFind = await this.userRepository.findOneBy({userName: userLogin.userName})
+        if (!userFind) {
+            user.check = false;
+        } else {
+
+            let compare = await bcrypt.compare(userLogin.password, userFind.password)
+            if (!compare) {
+                user.check = false;
+            }
+            if (compare) {
+                user.check = true;
+                user.userFind = userFind
+            }
+        }
+        return user;
+    }
 }
