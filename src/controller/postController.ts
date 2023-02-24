@@ -7,7 +7,10 @@ export class PostController {
     constructor() {
         this.postServices = new PostServices()
     }
-
+    getAllPost = async (req,res)=>{
+        let allPost = await this.postServices.getAllPost()
+        res.status(200).json(allPost)
+    }
     createPost = async (req: Request,res:Response) =>{
         let newPost = req.body
         await this.postServices.addPost(newPost)

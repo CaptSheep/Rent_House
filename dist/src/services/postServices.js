@@ -5,6 +5,9 @@ const data_source_1 = require("../data-source");
 const posts_1 = require("../model/posts");
 class PostServices {
     constructor() {
+        this.getAllPost = () => {
+            return this.postRepository.find();
+        };
         this.addPost = (post) => {
             return this.postRepository.save(post);
         };

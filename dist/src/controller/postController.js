@@ -4,6 +4,10 @@ exports.PostController = void 0;
 const postServices_1 = require("../services/postServices");
 class PostController {
     constructor() {
+        this.getAllPost = async (req, res) => {
+            let allPost = await this.postServices.getAllPost();
+            res.status(200).json(allPost);
+        };
         this.createPost = async (req, res) => {
             let newPost = req.body;
             await this.postServices.addPost(newPost);

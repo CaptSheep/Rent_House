@@ -8,7 +8,9 @@ export class PostServices {
             this.postRepository = AppDataSource.getRepository(Posts);
         })
     }
-
+    getAllPost = ()=> {
+        return this.postRepository.find()
+    }
     addPost = (post) =>{
         return this.postRepository.save(post)
     }
