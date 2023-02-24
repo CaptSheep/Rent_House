@@ -1,5 +1,4 @@
-
-
+import Auth from '../middleware/auth'
 import router from "express";
 import UserController from "../controller/userController";
 

@@ -1,15 +1,13 @@
 import {Request, Response} from "express";
 import {UserServices} from "../services/userServices";
 import Auth from '../middleware/auth'
+import auth from "../middleware/auth";
 
 export class UserController {
     private userServices: UserServices
-
     constructor() {
         this.userServices = new UserServices()
-
     }
-
     register = async (req: Request, res: Response) => {
         let checkUser = await this.userServices.checkRegister(req.body)
         if (checkUser) {
@@ -35,6 +33,7 @@ export class UserController {
                   userInfo : user.userFind,
                   token : token
               })
+
           } else {
               res.status(404).json('Wrong username or password. Please try again')
           }

@@ -7,7 +7,7 @@ export class UserServices {
     private userRepository ;
 
     constructor() {
-        AppDataSource.initialize().then(connection => {
+        AppDataSource.initialize().then( () => {
             this.userRepository = AppDataSource.getRepository(Users);
         })
     }
@@ -34,7 +34,6 @@ export class UserServices {
         if (!userFind) {
             user.check = false;
         } else {
-
             let compare = await bcrypt.compare(userLogin.password, userFind.password)
             if (!compare) {
                 user.check = false;
@@ -43,6 +42,7 @@ export class UserServices {
                 user.check = true;
                 user.userFind = userFind
             }
+
         }
         return user;
     }
