@@ -4,7 +4,7 @@ exports.PostController = void 0;
 const postServices_1 = require("../services/postServices");
 class PostController {
     constructor() {
-        this.createPost = async (req, res, next) => {
+        this.createPost = async (req, res) => {
             let newPost = req.body;
             await this.postServices.addPost(newPost);
             res.status(200).json({
@@ -24,6 +24,25 @@ class PostController {
             }
             else {
                 res.status(404).json(`We dont have this room`);
+            }
+        };
+        this.updatePost = async (req, res) => {
+            try {
+                let id = req.params.id;
+                let postInfo = await this.postServices.postInfo(id);
+                if (postInfo) {
+                    await this.postServices.editPost(id, req.body);
+                    res.status(200).json({
+                        mess: 'Update Successfully',
+                        newPost: req.body
+                    });
+                }
+                else {
+                    res.status(404).json('We dont have this house');
+                }
+            }
+            catch (err) {
+                res.status(401).json(err.message);
             }
         };
         this.postServices = new postServices_1.PostServices();

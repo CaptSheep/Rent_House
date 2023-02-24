@@ -16,6 +16,9 @@ export class PostServices {
         let postInfo = await this.postRepository.findOneBy({id: id})
        return postInfo
     }
+    editPost = async (id,post)=>{
+        return await this.postRepository.update({id: id}, post)
+    }
 
 }
 export default new PostServices()

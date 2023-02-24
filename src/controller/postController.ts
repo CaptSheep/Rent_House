@@ -8,7 +8,7 @@ export class PostController {
         this.postServices = new PostServices()
     }
 
-    createPost = async (req: Request,res:Response,next) =>{
+    createPost = async (req: Request,res:Response) =>{
         let newPost = req.body
         await this.postServices.addPost(newPost)
         res.status(200).json({
@@ -29,7 +29,27 @@ export class PostController {
         else {
             res.status(404).json(`We dont have this room`)
         }
+    }
 
+    updatePost = async (req : Request,res :Response)=>{
+    try{
+        let id = req.params.id
+        let postInfo = await this.postServices.postInfo(id)
+        if(postInfo){
+            await this.postServices.editPost(id,req.body)
+            res.status(200).json({
+                mess: 'Update Successfully',
+                newPost:  req.body
+            })
+        }
+        else {
+            res.status(404).json('We dont have this house')
+        }
+
+    }
+    catch (err){
+        res.status(401).json(err.message)
+    }
     }
 }
 export default new PostController()

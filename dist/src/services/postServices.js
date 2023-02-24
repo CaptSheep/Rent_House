@@ -12,6 +12,9 @@ class PostServices {
             let postInfo = await this.postRepository.findOneBy({ id: id });
             return postInfo;
         };
+        this.editPost = async (id, post) => {
+            return await this.postRepository.update({ id: id }, post);
+        };
         data_source_1.AppDataSource.initialize().then(() => {
             this.postRepository = data_source_1.AppDataSource.getRepository(posts_1.Posts);
         });

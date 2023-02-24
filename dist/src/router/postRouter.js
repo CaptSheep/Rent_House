@@ -10,4 +10,5 @@ const postController_1 = __importDefault(require("../controller/postController")
 exports.postRouter = (0, express_1.default)();
 exports.postRouter.post('/create', auth_1.default.checkToken, postController_1.default.createPost);
 exports.postRouter.get('/info/:id', auth_1.default.checkToken, postController_1.default.postInfo);
+exports.postRouter.post('/update/:id', auth_1.default.checkToken, postController_1.default.updatePost);
 //# sourceMappingURL=postRouter.js.map
