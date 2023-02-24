@@ -38,7 +38,7 @@ class UserServices {
             }
             return user;
         };
-        data_source_1.AppDataSource.initialize().then(connection => {
+        data_source_1.AppDataSource.initialize().then(() => {
             this.userRepository = data_source_1.AppDataSource.getRepository(users_1.Users);
         });
     }
