@@ -12,6 +12,10 @@ export class PostServices {
     addPost = (post) =>{
         return this.postRepository.save(post)
     }
+    postInfo = async (id) =>{
+        let postInfo = await this.postRepository.findOneBy({id: id})
+       return postInfo
+    }
 
 }
 export default new PostServices()

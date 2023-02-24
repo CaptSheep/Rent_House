@@ -8,6 +8,10 @@ class PostServices {
         this.addPost = (post) => {
             return this.postRepository.save(post);
         };
+        this.postInfo = async (id) => {
+            let postInfo = await this.postRepository.findOneBy({ id: id });
+            return postInfo;
+        };
         data_source_1.AppDataSource.initialize().then(() => {
             this.postRepository = data_source_1.AppDataSource.getRepository(posts_1.Posts);
         });
