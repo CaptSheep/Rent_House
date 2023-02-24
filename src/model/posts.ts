@@ -4,11 +4,11 @@ import {Entity,PrimaryGeneratedColumn,Column} from "typeorm";
 export class Posts {
     @PrimaryGeneratedColumn({type: 'int'})
     public id: number;
-    @Column({type: 'varchar'})
+    @Column({type: 'varchar',default : ""})
     public name: string;
     @Column({type: 'int'})
     public price: number;
-    @Column({type: 'varchar'})
+    @Column({type: 'varchar',default : ""})
     public address: string;
     @Column({type: 'longtext'})
     public description: string;
