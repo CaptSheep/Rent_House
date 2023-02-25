@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import categoriesServices, {CategoriesServices} from "../services/categoriesServices";
+import  {CategoriesServices} from "../services/categoriesServices";
 
 export class CategoriesController {
     private categoriesService : CategoriesServices
