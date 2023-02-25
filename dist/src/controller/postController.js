@@ -70,7 +70,7 @@ class PostController {
                 let category = await this.categoryService.getAllCategories();
                 let homes = await this.postServices.findByCategory(id);
                 res.status(200).json({
-                    mess: `Home in Categories ${category[homes.categoryId - 1].name}`,
+                    mess: `Home in Categories ${category[homes[0].categoryId - 1].name}`,
                     homeInfo: homes
                 });
             }

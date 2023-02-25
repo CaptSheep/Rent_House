@@ -22,7 +22,7 @@ export class PostServices {
         return await this.postRepository.update({id: id}, post)
     }
     findByCategory = async (id) => {
-        return await this.postRepository.findOneBy({categoryId: id})
+        return await this.postRepository.find({categoryId: id})
     }
     deletePost = async (id)=>{
         return this.postRepository.delete({id:id})
