@@ -18,6 +18,9 @@ class PostServices {
         this.editPost = async (id, post) => {
             return await this.postRepository.update({ id: id }, post);
         };
+        this.findByCategory = async (id) => {
+            return await this.postRepository.findBy({ categoryId: id });
+        };
         this.deletePost = async (id) => {
             return this.postRepository.delete({ id: id });
         };
@@ -47,7 +50,7 @@ class PostServices {
                                                        AND bedroom like '%${bedroom}%'
                                                        AND bathroom like '%${bathroom}%'
                                                        AND price = '${price}'
-                                                       AND status = 'Available'`);
+                                                       `);
             }
             else {
                 homes = await this.postRepository.query(`select *
@@ -55,7 +58,7 @@ class PostServices {
                                                      where address like '%${address}%'
                                                        AND bedroom like '%${bedroom}%'
                                                        AND bathroom like '%${bathroom}%'
-                                                       AND status = 'Available'`);
+                                                       `);
             }
             return homes;
         };

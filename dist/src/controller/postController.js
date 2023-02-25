@@ -31,7 +31,6 @@ class PostController {
                 let id = req.params.id;
                 let postInfo = await this.postServices.postInfo(id);
                 if (postInfo) {
-                    console.log(postInfo);
                     res.status(200).json({
                         mess: `Home number ${id} information `,
                         info: postInfo
@@ -62,6 +61,18 @@ class PostController {
             }
             catch (err) {
                 res.status(401).json(err.message);
+            }
+        };
+        this.findByCategory = async (req, res) => {
+            try {
+                let id = req.params.id;
+                let homes = await this.postServices.findByCategory(id);
+                res.json(homes);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
             }
         };
         this.deletePost = async (req, res) => {
@@ -107,10 +118,17 @@ class PostController {
         this.findHomes = async (req, res) => {
             try {
                 let home = await this.postServices.findHomes(req.body.address, req.body.bedroom, req.body.bathroom, req.body.price);
-                res.status(200).json({
-                    mess: `Find home  ${home[0].address} success`,
-                    homeInfo: home
-                });
+                if (home.length !== 0) {
+                    res.status(200).json({
+                        mess: `Find home  ${home[0].address} success`,
+                        homeInfo: home
+                    });
+                }
+                else {
+                    res.status(404).json({
+                        mess: `Can not find this home`
+                    });
+                }
             }
             catch (e) {
                 res.json({
