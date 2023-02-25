@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 export declare class PostController {
     private postServices;
+    private categoryService;
     constructor();
     getAllPost: (req: any, res: any) => Promise<void>;
     createPost: (req: Request, res: Response) => Promise<void>;

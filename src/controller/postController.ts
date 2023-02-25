@@ -1,10 +1,12 @@
 import {Request, Response} from "express";
 import {PostServices} from "../services/postServices";
+import {CategoriesServices} from "../services/categoriesServices";
 export class PostController {
     private postServices: PostServices
-
+    private categoryService : CategoriesServices
     constructor() {
         this.postServices = new PostServices()
+        this.categoryService = new CategoriesServices()
     }
     getAllPost = async (req,res)=>{
         try{
@@ -71,8 +73,12 @@ export class PostController {
     findByCategory = async (req: Request, res: Response) => {
         try {
             let id = req.params.id
+            let category = await this.categoryService.getAllCategories()
             let homes = await this.postServices.findByCategory(id);
-            res.json(homes)
+            res.status(200).json({
+                mess : `Home in Categories ${category[homes.categoryId -1].name}`,
+                homeInfo : homes
+            })
         } catch (e) {
             res.json({
                 mess: e.message

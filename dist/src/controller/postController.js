@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostController = void 0;
 const postServices_1 = require("../services/postServices");
+const categoriesServices_1 = require("../services/categoriesServices");
 class PostController {
     constructor() {
         this.getAllPost = async (req, res) => {
@@ -66,8 +67,12 @@ class PostController {
         this.findByCategory = async (req, res) => {
             try {
                 let id = req.params.id;
+                let category = await this.categoryService.getAllCategories();
                 let homes = await this.postServices.findByCategory(id);
-                res.json(homes);
+                res.status(200).json({
+                    mess: `Home in Categories ${category[homes.categoryId - 1].name}`,
+                    homeInfo: homes
+                });
             }
             catch (e) {
                 res.json({
@@ -137,6 +142,7 @@ class PostController {
             }
         };
         this.postServices = new postServices_1.PostServices();
+        this.categoryService = new categoriesServices_1.CategoriesServices();
     }
 }
 exports.PostController = PostController;
