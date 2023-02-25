@@ -18,7 +18,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Posts.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
+    (0, typeorm_1.Column)({ type: 'varchar', default: "" }),
     __metadata("design:type", String)
 ], Posts.prototype, "name", void 0);
 __decorate([
@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Posts.prototype, "price", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
+    (0, typeorm_1.Column)({ type: 'varchar', default: "" }),
     __metadata("design:type", String)
 ], Posts.prototype, "address", void 0);
 __decorate([

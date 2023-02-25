@@ -6,7 +6,7 @@ export class Users {
     public id : number
     @Column({type: "varchar", default : ''})
     public fullName : string
-    @Column({type: "varchar", default : ''})
+    @Column({type: "varchar", unique:true})
     public userName : string
     @Column({type: "varchar", default : ''})
     public address : string

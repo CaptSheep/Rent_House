@@ -22,7 +22,7 @@ __decorate([
     __metadata("design:type", String)
 ], Users.prototype, "fullName", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar", default: '' }),
+    (0, typeorm_1.Column)({ type: "varchar", unique: true }),
     __metadata("design:type", String)
 ], Users.prototype, "userName", void 0);
 __decorate([
