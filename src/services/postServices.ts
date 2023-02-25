@@ -1,6 +1,5 @@
 import {AppDataSource} from "../data-source";
 import {Posts} from "../model/posts";
-import {deflateRawSync} from "zlib";
 
 export class PostServices {
     private postRepository
