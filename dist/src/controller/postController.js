@@ -82,6 +82,28 @@ class PostController {
                 res.status(401).json(err.message);
             }
         };
+        this.findById = async (req, res) => {
+            try {
+                let id = req.params.id;
+                let home = await this.postServices.findById(id);
+                if (home.length !== 0) {
+                    res.status(200).json({
+                        mess: `Find Home ${home[0].name} success`,
+                        homeInfo: home[0]
+                    });
+                }
+                else {
+                    res.status(401).json({
+                        mess: `Can not find this house`
+                    });
+                }
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.postServices = new postServices_1.PostServices();
     }
 }

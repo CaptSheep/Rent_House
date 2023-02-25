@@ -21,6 +21,23 @@ class PostServices {
         this.deletePost = async (id) => {
             return this.postRepository.delete({ id: id });
         };
+        this.findById = async (id) => {
+            return await this.postRepository.query(`select posts.id,
+                                                       posts.name,
+                                                        posts.price,
+                                                       posts.address,
+                                                       posts.description,
+                                                       c.name as category,
+                                                       posts.bedroom,
+                                                       posts.bathroom,
+                                                       posts.status,
+                                                       posts.userId,
+                                                       posts.avatar,
+                                                       posts.star
+                                                from posts
+                                                         join categories c on posts.categoryId = c.id
+                                                where posts.id = ${id}`);
+        };
         data_source_1.AppDataSource.initialize().then(() => {
             this.postRepository = data_source_1.AppDataSource.getRepository(posts_1.Posts);
         });
