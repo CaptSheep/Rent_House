@@ -11,6 +11,9 @@ exports.postRouter = (0, express_1.default)();
 exports.postRouter.get('/', auth_1.default.checkToken, postController_1.default.getAllPost);
 exports.postRouter.post('/create', auth_1.default.checkToken, postController_1.default.createPost);
 exports.postRouter.get('/info/:id', auth_1.default.checkToken, postController_1.default.postInfo);
+exports.postRouter.get('/find/:id', auth_1.default.checkToken, postController_1.default.findById);
+exports.postRouter.get('/find', auth_1.default.checkToken, postController_1.default.findHomes);
+exports.postRouter.get('/findByCategory/:id', auth_1.default.checkToken, postController_1.default.findByCategory);
 exports.postRouter.delete('/delete/:id', auth_1.default.checkToken, postController_1.default.deletePost);
 exports.postRouter.post('/update/:id', auth_1.default.checkToken, postController_1.default.updatePost);
 //# sourceMappingURL=postRouter.js.map
