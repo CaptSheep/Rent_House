@@ -45,6 +45,27 @@ export class PostServices {
                                                 where posts.id = ${id}`)
         }
 
+    findHomes = async (address, bedroom, bathroom, price) => {
+        let homes
+        if (price !== "") {
+            homes = await this.postRepository.query(`select *
+                                                     from posts
+                                                     where address like '%${address}%'
+                                                       AND bedroom like '%${bedroom}%'
+                                                       AND bathroom like '%${bathroom}%'
+                                                       AND price = '${price}'
+                                                       AND status = 'Available'`)
+        } else {
+            homes = await this.postRepository.query(`select *
+                                                     from posts
+                                                     where address like '%${address}%'
+                                                       AND bedroom like '%${bedroom}%'
+                                                       AND bathroom like '%${bathroom}%'
+                                                       AND status = 'Available'`)
+        }
+
+        return homes
+    }
 
 }
 export default new PostServices()

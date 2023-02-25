@@ -98,7 +98,6 @@ export class PostController {
                     mess :`Find Home ${home[0].name} success`,
                     homeInfo: home[0]
                 })
-                    // console.log(123)
             }
             else {
                 res.status(401).json({
@@ -106,6 +105,19 @@ export class PostController {
                 })
             }
 
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
+    findHomes = async (req: Request, res: Response) => {
+        try {
+            let home = await this.postServices.findHomes(req.body.address, req.body.bedroom, req.body.bathroom, req.body.price);
+            res.status(200).json({
+                mess :`Find home  ${home[0].address} success`,
+                homeInfo : home
+            })
         } catch (e) {
             res.json({
                 mess: e.message

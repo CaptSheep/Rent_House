@@ -104,6 +104,20 @@ class PostController {
                 });
             }
         };
+        this.findHomes = async (req, res) => {
+            try {
+                let home = await this.postServices.findHomes(req.body.address, req.body.bedroom, req.body.bathroom, req.body.price);
+                res.status(200).json({
+                    mess: `Find home  ${home[0].address} success`,
+                    homeInfo: home
+                });
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.postServices = new postServices_1.PostServices();
     }
 }
