@@ -14,6 +14,9 @@ class CategoriesServices {
         this.updateCategory = async (id, newCategory) => {
             return this.categoriesRepository.update({ id: id }, newCategory);
         };
+        this.deleteCategory = async (id) => {
+            return this.categoriesRepository.delete({ id: id });
+        };
         data_source_1.AppDataSource.initialize().then(() => {
             this.categoriesRepository = data_source_1.AppDataSource.getRepository(categories_1.Categories);
         });

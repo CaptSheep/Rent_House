@@ -39,6 +39,13 @@ export class CategoriesController {
             info : newCategory
         })
     }
+    deleteCategories  = async (req : Request, res:Response) =>{
+        let id = req.params.id
+        await this.categoriesService.deleteCategory(id)
+        res.status(200).json({
+            mess: `Delete category number ${id} success`
+        })
+    }
 
 
 }

@@ -11,4 +11,5 @@ exports.categoriesRouter = (0, express_1.default)();
 exports.categoriesRouter.get('/', auth_1.default.checkToken, categoriesController_1.default.getAllCategories);
 exports.categoriesRouter.post('/create', auth_1.default.checkToken, categoriesController_1.default.createCategories);
 exports.categoriesRouter.put('/update/:id', auth_1.default.checkToken, categoriesController_1.default.updateCategories);
+exports.categoriesRouter.delete('/delete/:id', auth_1.default.checkToken, categoriesController_1.default.deleteCategories);
 //# sourceMappingURL=categoriesRouter.js.map
