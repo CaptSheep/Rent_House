@@ -5,8 +5,35 @@ const categoriesServices_1 = require("../services/categoriesServices");
 class CategoriesController {
     constructor() {
         this.getAllCategories = async (req, res) => {
-            let categories = await this.categoriesService.getAllCategories();
-            res.status(200).json(categories);
+            try {
+                let categories = await this.categoriesService.getAllCategories();
+                res.status(200).json(categories);
+            }
+            catch (err) {
+                res.status(401).json(err.message);
+            }
+        };
+        this.createCategories = async (req, res) => {
+            try {
+                let categoryInfo = req.body;
+                let newCategories = await this.categoriesService.createCategories(categoryInfo);
+                res.status(200).json({
+                    mess: `Create category ${req.body.name} successfully`,
+                    category: newCategories
+                });
+            }
+            catch (err) {
+                res.status(401).json(err.message);
+            }
+        };
+        this.updateCategories = async (req, res) => {
+            let id = req.params.id;
+            let updateCategory = req.body;
+            let newCategory = await this.categoriesService.updateCategory(id, updateCategory);
+            res.status(200).json({
+                mess: `update category number ${id} success`,
+                info: newCategory
+            });
         };
         this.categoriesService = new categoriesServices_1.CategoriesServices();
     }

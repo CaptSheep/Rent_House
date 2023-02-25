@@ -8,6 +8,12 @@ class CategoriesServices {
         this.getAllCategories = () => {
             return this.categoriesRepository.find();
         };
+        this.createCategories = async (category) => {
+            return this.categoriesRepository.save(category);
+        };
+        this.updateCategory = async (id, newCategory) => {
+            return this.categoriesRepository.update({ id: id }, newCategory);
+        };
         data_source_1.AppDataSource.initialize().then(() => {
             this.categoriesRepository = data_source_1.AppDataSource.getRepository(categories_1.Categories);
         });
