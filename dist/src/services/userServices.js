@@ -9,6 +9,12 @@ const users_1 = require("../model/users");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 class UserServices {
     constructor() {
+        this.listUser = () => {
+            return this.userRepository.find();
+        };
+        this.findUserById = (id) => {
+            return this.userRepository.findOneBy({ id: id });
+        };
         this.checkRegister = async (newUser) => {
             let check;
             let user = await this.userRepository.findOneBy({ userName: newUser.userName });

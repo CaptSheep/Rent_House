@@ -30,11 +30,11 @@ __decorate([
     __metadata("design:type", Number)
 ], Contracts.prototype, "totalPrice", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
+    (0, typeorm_1.Column)({ type: 'varchar', default: new Date().getHours() }),
     __metadata("design:type", String)
 ], Contracts.prototype, "timeStart", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
+    (0, typeorm_1.Column)({ type: 'varchar', default: new Date().getHours() }),
     __metadata("design:type", String)
 ], Contracts.prototype, "timeEnd", void 0);
 Contracts = __decorate([

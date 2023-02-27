@@ -8,6 +8,10 @@ const userServices_1 = require("../services/userServices");
 const auth_1 = __importDefault(require("../middleware/auth"));
 class UserController {
     constructor() {
+        this.listUser = async (req, res) => {
+            let user = await this.userServices.listUser();
+            res.status(200).json(user);
+        };
         this.register = async (req, res) => {
             let checkUser = await this.userServices.checkRegister(req.body);
             if (checkUser) {

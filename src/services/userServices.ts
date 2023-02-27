@@ -11,6 +11,12 @@ export class UserServices {
             this.userRepository = AppDataSource.getRepository(Users);
         })
     }
+    listUser = () =>{
+        return this.userRepository.find()
+    }
+    findUserById = (id) =>{
+        return this.userRepository.findOneBy({id:id})
+    }
 
     register(user){
         let newUser = this.userRepository.save(user)
