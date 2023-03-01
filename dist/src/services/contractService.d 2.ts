@@ -6,5 +6,6 @@ export declare class ContractService {
     updateContract: (id: any, contract: any) => any;
     findContractById: (id: any) => any;
     findByUserId: (id: any) => any;
+    editContract: (id: any, contract: any) => any;
     deleteContract: (id: any) => any;
 }

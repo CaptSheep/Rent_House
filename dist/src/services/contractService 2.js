@@ -20,6 +20,9 @@ class ContractService {
         this.findByUserId = (id) => {
             return this.contractService.find({ userId: id });
         };
+        this.editContract = (id, contract) => {
+            return this.contractService.update({ id: id }, contract);
+        };
         this.deleteContract = (id) => {
             return this.contractService.delete({ id: id });
         };

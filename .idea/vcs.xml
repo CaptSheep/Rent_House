@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Flappy-bird" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MD1_Case_Study" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Md1_Web_login" vcs="Git" />
   </component>
 </project>

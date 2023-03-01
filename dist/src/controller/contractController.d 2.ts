@@ -3,12 +3,10 @@ export declare class ContractController {
     private contractService;
     private userService;
     constructor();
-    getAllContract: (req: Request, res: Response) => Promise<void>;
+    getAllContract: () => Promise<any>;
     createContract: (req: Request, res: Response) => Promise<void>;
     updateContract: (req: Request, res: Response) => Promise<void>;
     deleteContract: (req: Request, res: Response) => Promise<void>;
-    findContractById: (req: Request, res: Response) => Promise<void>;
-    findContractByUserId: (req: Request, res: Response) => Promise<void>;
 }
 declare const _default: ContractController;
 export default _default;

@@ -9,40 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Contracts = void 0;
+exports.Notification = void 0;
 const typeorm_1 = require("typeorm");
-let Contracts = class Contracts {
+let Notification = class Notification {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
     __metadata("design:type", Number)
-], Contracts.prototype, "id", void 0);
+], Notification.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar' }),
+    __metadata("design:type", String)
+], Notification.prototype, "username", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
-], Contracts.prototype, "userId", void 0);
+], Notification.prototype, "homeId", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
-    __metadata("design:type", Number)
-], Contracts.prototype, "homeId", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
-    __metadata("design:type", Number)
-], Contracts.prototype, "totalPrice", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', default: new Date().getHours() }),
+    (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
-], Contracts.prototype, "timeStart", void 0);
+], Notification.prototype, "content", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', default: new Date().getHours() }),
+    (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
-], Contracts.prototype, "timeEnd", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', default: 'Available' }),
-    __metadata("design:type", String)
-], Contracts.prototype, "status", void 0);
-Contracts = __decorate([
+], Notification.prototype, "time", void 0);
+Notification = __decorate([
     (0, typeorm_1.Entity)()
-], Contracts);
-exports.Contracts = Contracts;
-//# sourceMappingURL=contracts.js.map
+], Notification);
+exports.Notification = Notification;
+//# sourceMappingURL=notifications.js.map

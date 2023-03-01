@@ -5,9 +5,8 @@ const contractService_1 = require("../services/contractService");
 const userServices_1 = require("../services/userServices");
 class ContractController {
     constructor() {
-        this.getAllContract = async (req, res) => {
-            let allContract = await this.contractService.getAllContract();
-            res.status(200).json(allContract);
+        this.getAllContract = async () => {
+            return await this.contractService.getAllContract();
         };
         this.createContract = async (req, res) => {
             try {
@@ -39,23 +38,6 @@ class ContractController {
             let userInfo = await this.userService.findUserById(req.body.userId);
             res.status(200).json({
                 mess: `Delete Contract of User ${userInfo.fullName} success`
-            });
-        };
-        this.findContractById = async (req, res) => {
-            let id = req.params.id;
-            let contract = await this.contractService.findContractById(id);
-            res.status(200).json({
-                mess: `Info of Contract number ${id} `,
-                contractInfo: contract
-            });
-        };
-        this.findContractByUserId = async (req, res) => {
-            let userId = req.params.id;
-            let user = await this.userService.findUserById(userId);
-            let contract = await this.contractService.findByUserId(userId);
-            res.status(200).json({
-                mess: `Info  Contract of User ${user.fullName} is :`,
-                contractInfo: contract
             });
         };
         this.contractService = new contractService_1.ContractService();

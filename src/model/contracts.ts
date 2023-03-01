@@ -14,4 +14,6 @@ export class Contracts {
     public timeStart: string;
     @Column({type: 'varchar',default : new Date().getHours()})
     public timeEnd: string;
+    @Column ({type : 'varchar', default : 'Available'})
+    public status : string;
 }

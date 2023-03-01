@@ -16,14 +16,14 @@ export class ContractService {
     createContract = (contract) => {
         return this.contractService.save(contract)
     }
+    updateContract  = (id, contract) =>{
+        return this.contractService.update({id : id} ,contract)
+    }
     findContractById  = (id) =>{
         return this.contractService.find({id : id})
     }
     findByUserId  = (id) =>{
         return this.contractService.find({userId : id})
-    }
-    editContract = (id,contract) =>{
-        return this.contractService.update({id : id } , contract)
     }
     deleteContract = ( id) => {
         return this.contractService.delete({id: id})

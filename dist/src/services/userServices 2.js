@@ -22,7 +22,7 @@ class UserServices {
                 check = true;
             }
             else {
-                newUser.password = await bcrypt_1.default.hash(newUser.password, 10);
+                user.password = await bcrypt_1.default.hash(user.password, 10);
                 check = false;
             }
             return check;

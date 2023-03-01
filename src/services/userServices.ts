@@ -28,6 +28,10 @@ export class UserServices {
         if(user){
             check = true
         }
+        else {
+            newUser.password = await bcrypt.hash(newUser.password, 10)
+            check = false
+        }
         return check
     }
 
@@ -37,10 +41,12 @@ export class UserServices {
             userFind: []
         }
         let userFind = await this.userRepository.findOneBy({userName: userLogin.userName})
+
         if (!userFind) {
             user.check = false;
         } else {
             let compare = await bcrypt.compare(userLogin.password, userFind.password)
+
             if (!compare) {
                 user.check = false;
             }

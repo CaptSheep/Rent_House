@@ -9,40 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Contracts = void 0;
+exports.Comment = void 0;
 const typeorm_1 = require("typeorm");
-let Contracts = class Contracts {
+let Comment = class Comment {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
     __metadata("design:type", Number)
-], Contracts.prototype, "id", void 0);
+], Comment.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
-], Contracts.prototype, "userId", void 0);
+], Comment.prototype, "homeId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
-], Contracts.prototype, "homeId", void 0);
+], Comment.prototype, "userId", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int' }),
-    __metadata("design:type", Number)
-], Contracts.prototype, "totalPrice", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', default: new Date().getHours() }),
+    (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
-], Contracts.prototype, "timeStart", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', default: new Date().getHours() }),
-    __metadata("design:type", String)
-], Contracts.prototype, "timeEnd", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', default: 'Available' }),
-    __metadata("design:type", String)
-], Contracts.prototype, "status", void 0);
-Contracts = __decorate([
+], Comment.prototype, "comment", void 0);
+Comment = __decorate([
     (0, typeorm_1.Entity)()
-], Contracts);
-exports.Contracts = Contracts;
-//# sourceMappingURL=contracts.js.map
+], Comment);
+exports.Comment = Comment;
+//# sourceMappingURL=comments.js.map
