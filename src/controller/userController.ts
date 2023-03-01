@@ -8,6 +8,10 @@ export class UserController {
     constructor() {
         this.userServices = new UserServices()
     }
+    listUser = async (req:Request, res : Response) =>{
+        let user = await this.userServices.listUser()
+        res.status(200).json(user)
+    }
     register = async (req: Request, res: Response) => {
         let checkUser = await this.userServices.checkRegister(req.body)
         if (checkUser) {

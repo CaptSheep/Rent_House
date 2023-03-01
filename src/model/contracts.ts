@@ -10,8 +10,10 @@ export class Contracts {
     public homeId: number;
     @Column({type: 'int'})
     public totalPrice: number;
-    @Column({type: 'varchar'})
+    @Column({type: 'varchar', default : new Date().getHours()})
     public timeStart: string;
-    @Column({type: 'varchar'})
+    @Column({type: 'varchar',default : new Date().getHours()})
     public timeEnd: string;
+    @Column ({type : 'varchar', default : 'Available'})
+    public status : string;
 }

@@ -11,6 +11,12 @@ export class UserServices {
             this.userRepository = AppDataSource.getRepository(Users);
         })
     }
+    listUser = () =>{
+        return this.userRepository.find()
+    }
+    findUserById = (id) =>{
+        return this.userRepository.findOneBy({id:id})
+    }
 
     register(user){
         let newUser = this.userRepository.save(user)
@@ -22,6 +28,10 @@ export class UserServices {
         if(user){
             check = true
         }
+        else {
+            newUser.password = await bcrypt.hash(newUser.password, 10)
+            check = false
+        }
         return check
     }
 
@@ -31,10 +41,12 @@ export class UserServices {
             userFind: []
         }
         let userFind = await this.userRepository.findOneBy({userName: userLogin.userName})
+
         if (!userFind) {
             user.check = false;
         } else {
             let compare = await bcrypt.compare(userLogin.password, userFind.password)
+
             if (!compare) {
                 user.check = false;
             }
