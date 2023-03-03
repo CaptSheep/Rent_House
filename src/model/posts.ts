@@ -1,10 +1,18 @@
-import {Entity,PrimaryGeneratedColumn,Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import {Users} from "./users";
+import {Categories} from "./categories";
 
 @Entity()
 export class Posts {
     @PrimaryGeneratedColumn({type: 'int'})
     public id: number;
     @Column({type: 'varchar',default : ""})
+    @ManyToOne(type => Users,(user)=>user.posts)
+    user : Users
+    @ManyToOne ((comment)=>comment.posts)
+    comments : Comment
+    @ManyToOne((category)=>category.posts)
+    categories : Categories
     public name: string;
     @Column({type: 'int'})
     public price: number;

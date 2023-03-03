@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Users} from "./users";
 
 @Entity()
 export class Contracts {
@@ -16,4 +17,6 @@ export class Contracts {
     public timeEnd: string;
     @Column ({type : 'varchar', default : 'Available'})
     public status : string;
+    @ManyToOne(type => Users,(user)=>user.contracts)
+    user : Users
 }

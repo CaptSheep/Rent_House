@@ -11,12 +11,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Users = void 0;
 const typeorm_1 = require("typeorm");
+const comments_1 = require("./comments");
+const posts_1 = require("./posts");
+const contracts_1 = require("./contracts");
 let Users = class Users {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
     __metadata("design:type", Number)
 ], Users.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(type => comments_1.Comment, (comment) => comment.user),
+    __metadata("design:type", Object)
+], Users.prototype, "comments", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(type => posts_1.Posts, (post) => post.user),
+    __metadata("design:type", Object)
+], Users.prototype, "posts", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(type => contracts_1.Contracts, (contract) => contract.user),
+    __metadata("design:type", Object)
+], Users.prototype, "contracts", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "varchar", default: '' }),
     __metadata("design:type", String)
