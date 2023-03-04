@@ -8,3 +8,5 @@ export declare class NotificationServices {
     findNotificationByUserId: (id: any) => any;
     deleteNotification: (id: any) => any;
 }
+declare const _default: NotificationServices;
+export default _default;

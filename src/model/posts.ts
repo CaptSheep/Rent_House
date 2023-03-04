@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany} from "typeorm";
 import {Users} from "./users";
+import {Comment} from "./comments";
 import {Categories} from "./categories";
 
 @Entity()
@@ -9,9 +10,9 @@ export class Posts {
     @Column({type: 'varchar',default : ""})
     @ManyToOne(type => Users,(user)=>user.posts)
     user : Users
-    @ManyToOne ((comment)=>comment.posts)
+    @ManyToMany (() =>Comment,(comments)=>comments.posts)
     comments : Comment
-    @ManyToOne((category)=>category.posts)
+    @ManyToOne(()=>Categories,(category)=>category.posts)
     categories : Categories
     public name: string;
     @Column({type: 'int'})

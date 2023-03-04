@@ -1,4 +1,5 @@
 import { Users } from "./users";
+import { Comment } from "./comments";
 import { Categories } from "./categories";
 export declare class Posts {
     id: number;

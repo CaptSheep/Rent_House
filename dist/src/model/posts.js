@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Posts = void 0;
 const typeorm_1 = require("typeorm");
 const users_1 = require("./users");
+const comments_1 = require("./comments");
 const categories_1 = require("./categories");
 let Posts = class Posts {
 };
@@ -25,11 +26,11 @@ __decorate([
     __metadata("design:type", users_1.Users)
 ], Posts.prototype, "user", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)((comment) => comment.posts),
-    __metadata("design:type", Comment)
+    (0, typeorm_1.ManyToMany)(() => comments_1.Comment, (comments) => comments.posts),
+    __metadata("design:type", comments_1.Comment)
 ], Posts.prototype, "comments", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)((category) => category.posts),
+    (0, typeorm_1.ManyToOne)(() => categories_1.Categories, (category) => category.posts),
     __metadata("design:type", categories_1.Categories)
 ], Posts.prototype, "categories", void 0);
 __decorate([

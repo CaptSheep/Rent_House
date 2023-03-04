@@ -29,3 +29,4 @@ export class NotificationServices {
         return this.notificationService.delete({id: id})
     }
 }
+export default new NotificationServices()

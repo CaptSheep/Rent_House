@@ -29,4 +29,5 @@ class NotificationServices {
     }
 }
 exports.NotificationServices = NotificationServices;
+exports.default = new NotificationServices();
 //# sourceMappingURL=notificationServices.js.map
