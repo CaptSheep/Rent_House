@@ -1,5 +1,11 @@
+import { Users } from "./users";
+import { Comment } from "./comments";
+import { Categories } from "./categories";
 export declare class Posts {
     id: number;
+    user: Users;
+    comments: Comment;
+    categories: Categories;
     name: string;
     price: number;
     address: string;

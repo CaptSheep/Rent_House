@@ -1,4 +1,6 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany} from "typeorm";
+import {Users} from "./users";
+import {Posts} from "./posts";
 
 @Entity()
 export class Comment{
@@ -8,6 +10,12 @@ export class Comment{
     public homeId: number;
     @Column({type: 'int'})
     public userId: number;
+    @ManyToOne(type => Users,(user)=>user.comments)
+    user : Users
+    @OneToMany(type => Posts,(posts)=>posts.comments)
+    posts :Posts
     @Column({type: 'varchar'})
     public comment: string;
+
+
 }

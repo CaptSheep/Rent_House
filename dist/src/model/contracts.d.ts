@@ -1,3 +1,4 @@
+import { Users } from "./users";
 export declare class Contracts {
     id: number;
     userId: number;
@@ -6,4 +7,5 @@ export declare class Contracts {
     timeStart: string;
     timeEnd: string;
     status: string;
+    user: Users;
 }
