@@ -34,6 +34,37 @@ export class UserServices {
         }
         return check
     }
+    checkChangePassword = async (idUser, oldPassword, newPassword) => {
+        let user = {
+            check: 0,
+            userFind: []
+        }
+
+        let userFind = await this.userRepository.findBy({id: idUser})
+        if (userFind.length === 0) {
+            user.check = 0;
+        } else {
+            let compareOldPassword = await bcrypt.compare(oldPassword, userFind[0].password)
+            if (!compareOldPassword) {
+                user.userFind = userFind
+                user.check = 0;
+            }
+            if (compareOldPassword) {
+                let compareNewPass = await bcrypt.compare(newPassword, userFind[0].password)
+                if (compareNewPass) {
+                    user.userFind = userFind
+                    user.check = 2
+                }
+                if (!compareNewPass) {
+                    newPassword = await bcrypt.hash(newPassword, 10)
+                    await this.userRepository.update({id: idUser}, {password: newPassword})
+                    user.check = 1;
+                    user.userFind = userFind
+                }
+            }
+        }
+        return user
+    }
 
     checkLogin = async (userLogin) => {
         let user = {
@@ -58,4 +89,21 @@ export class UserServices {
         }
         return user;
     }
+    updateProfile = async (idUser, newFullName, newJob, newAddress, newPhone, newEmail, newAvatar) => {
+        let user = {
+            userFind: []
+        }
+        await this.userRepository.update({id: idUser}, {
+            fullName: newFullName,
+            job: newJob,
+            address: newAddress,
+            phone: newPhone,
+            email: newEmail,
+            avatar: newAvatar
+        });
+        let userFind = await this.userRepository.findBy({id: idUser})
+        user.userFind = userFind
+        return user
+    }
+
 }
