@@ -46,6 +46,46 @@ export class UserController {
           res.status(401).json(err.message)
       }
     }
+    changePassword = async (req: Request, res: Response) => {
+        try {
+            let user = await this.userServices.checkChangePassword(req.params.id, req.body.oldPassword, req.body.newPassword)
+            if (user.check === 0) {
+                res.json({
+                    user,
+                    mess: "Old Password Is Not Correct"
+                })
+            }
+            if (user.check === 1) {
+                res.json({
+                    user,
+                    mess: "Change Password Successfully"
+                })
+            }
+            if (user.check === 2) {
+                res.json({
+                    user,
+                    mess: "Don't use old passwords!"
+                })
+            }
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
+    updateProfile = async (req: Request, res: Response) => {
+        try {
+            let user = await this.userServices.updateProfile(req.params.id, req.body.newFullName, req.body.newJob, req.body.newAddress, req.body.newPhone, req.body.newEmail, req.body.newAvatar)
+            res.json({
+                user,
+                mess: `Update User Success`
+            })
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
 }
 
 export default new UserController();
