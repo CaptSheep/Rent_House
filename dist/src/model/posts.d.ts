@@ -4,8 +4,8 @@ import { Categories } from "./categories";
 export declare class Posts {
     id: number;
     user: Users;
-    comments: Comment;
-    categories: Categories;
+    comments: Comment[];
+    categories: Categories[];
     name: string;
     price: number;
     address: string;

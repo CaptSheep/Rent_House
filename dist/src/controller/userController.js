@@ -26,7 +26,9 @@ class UserController {
         };
         this.login = async (req, res) => {
             try {
+                console.log(req.body);
                 let user = await this.userServices.checkLogin(req.body);
+                console.log(user);
                 if (user.check) {
                     let token = await auth_1.default.signToken(user);
                     res.cookie('loginInfo', token, {
@@ -40,7 +42,9 @@ class UserController {
                     });
                 }
                 else {
-                    res.status(404).json('Wrong username or password. Please try again');
+                    res.status(200).json({
+                        mess: 'Wrong username or password. Please try again'
+                    });
                 }
             }
             catch (err) {

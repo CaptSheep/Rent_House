@@ -32,8 +32,8 @@ __decorate([
     __metadata("design:type", users_1.Users)
 ], Comment.prototype, "user", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(type => posts_1.Posts, (posts) => posts.comments),
-    __metadata("design:type", posts_1.Posts)
+    (0, typeorm_1.ManyToMany)(type => posts_1.Posts, (posts) => posts.comments),
+    __metadata("design:type", Array)
 ], Comment.prototype, "posts", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
