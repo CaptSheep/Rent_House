@@ -1,4 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany} from "typeorm";
+import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMany} from "typeorm";
 import {Users} from "./users";
 import {Posts} from "./posts";
 
@@ -12,8 +12,8 @@ export class Comment{
     public userId: number;
     @ManyToOne(type => Users,(user)=>user.comments)
     user : Users
-    @OneToMany(type => Posts,(posts)=>posts.comments)
-    posts :Posts
+    @ManyToMany(type => Posts,(posts)=>posts.comments)
+    posts :Posts[]
     @Column({type: 'varchar'})
     public comment: string;
 

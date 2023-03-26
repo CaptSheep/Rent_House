@@ -5,6 +5,6 @@ export declare class Comment {
     homeId: number;
     userId: number;
     user: Users;
-    posts: Posts;
+    posts: Posts[];
     comment: string;
 }

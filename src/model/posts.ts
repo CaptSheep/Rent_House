@@ -11,9 +11,10 @@ export class Posts {
     @ManyToOne(type => Users,(user)=>user.posts)
     user : Users
     @ManyToMany (() =>Comment,(comments)=>comments.posts)
-    comments : Comment
+    comments : Comment[]
     @ManyToOne(()=>Categories,(category)=>category.posts)
-    categories : Categories
+    categories : Categories[]
+    @Column()
     public name: string;
     @Column({type: 'int'})
     public price: number;

@@ -27,12 +27,16 @@ __decorate([
 ], Posts.prototype, "user", void 0);
 __decorate([
     (0, typeorm_1.ManyToMany)(() => comments_1.Comment, (comments) => comments.posts),
-    __metadata("design:type", comments_1.Comment)
+    __metadata("design:type", Array)
 ], Posts.prototype, "comments", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => categories_1.Categories, (category) => category.posts),
-    __metadata("design:type", categories_1.Categories)
+    __metadata("design:type", Array)
 ], Posts.prototype, "categories", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Posts.prototype, "name", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)

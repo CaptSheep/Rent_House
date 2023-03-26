@@ -8,11 +8,11 @@ export class Users {
     @PrimaryGeneratedColumn({type:'int'})
     public id : number
     @OneToMany(type => Comment,(comment)=>comment.user)
-    comments
+    comments : Comment[]
     @OneToMany(type => Posts,(post)=>post.user)
-    posts
+    posts : Posts[]
     @OneToMany(type => Contracts,(contract)=>contract.user)
-    contracts
+    contracts : Contracts[]
     @Column({type: "varchar", default : ''})
     public fullName : string
     @Column({type: "varchar", unique:true})

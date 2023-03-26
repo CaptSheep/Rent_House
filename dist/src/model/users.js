@@ -22,15 +22,15 @@ __decorate([
 ], Users.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(type => comments_1.Comment, (comment) => comment.user),
-    __metadata("design:type", Object)
+    __metadata("design:type", Array)
 ], Users.prototype, "comments", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(type => posts_1.Posts, (post) => post.user),
-    __metadata("design:type", Object)
+    __metadata("design:type", Array)
 ], Users.prototype, "posts", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(type => contracts_1.Contracts, (contract) => contract.user),
-    __metadata("design:type", Object)
+    __metadata("design:type", Array)
 ], Users.prototype, "contracts", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "varchar", default: '' }),

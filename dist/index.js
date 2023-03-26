@@ -7,12 +7,14 @@ const express_1 = __importDefault(require("express"));
 const data_source_1 = require("./src/data-source");
 const router_1 = require("./src/router/router");
 const cookieParser = require("cookie-parser");
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 data_source_1.AppDataSource.initialize().then(() => {
     console.log('Connect Database Success!');
 });
 app.use(express_1.default.json());
 app.use(cookieParser());
+app.use((0, cors_1.default)());
 app.use('', router_1.router);
 app.listen(8080, 'localhost', () => {
     console.log('Server is running at port : 8080');

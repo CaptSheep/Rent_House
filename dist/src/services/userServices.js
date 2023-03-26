@@ -63,7 +63,7 @@ class UserServices {
                 check: false,
                 userFind: []
             };
-            let userFind = await this.userRepository.findOneBy({ userName: userLogin.userName });
+            let userFind = await this.userRepository.findOneBy({ email: userLogin.email });
             if (!userFind) {
                 user.check = false;
             }
