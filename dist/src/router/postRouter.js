@@ -15,5 +15,5 @@ exports.postRouter.get('/find/:id', auth_1.default.checkToken, postController_1.
 exports.postRouter.get('/find', postController_1.default.findHomes);
 exports.postRouter.get('/findByCategory/:id', postController_1.default.findByCategory);
 exports.postRouter.delete('/delete/:id', auth_1.default.checkToken, postController_1.default.deletePost);
-exports.postRouter.post('/update/:id', auth_1.default.checkToken, postController_1.default.updatePost);
+exports.postRouter.put('/update/:id', auth_1.default.checkToken, postController_1.default.updatePost);
 //# sourceMappingURL=postRouter.js.map
